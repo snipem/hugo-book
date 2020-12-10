@@ -1,14 +1,14 @@
 - id: Search
-  translation: Suche
+  translation: Søk
 
 - id: Edit this page
-  translation: Seite bearbeiten
+  translation: Rediger denne siden
 
 - id: Last modified by
-  translation: Zuletzt geändert von
+  translation: Sist endret av
 
 - id: Expand
-  translation: Erweitern
+  translation: Utvid
 
 - id: bookSearchConfig
   translation: '{ cache: true }'

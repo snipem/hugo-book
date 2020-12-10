@@ -1,14 +1,14 @@
 - id: Search
-  translation: Suche
+  translation: Vyhledávat
 
 - id: Edit this page
-  translation: Seite bearbeiten
+  translation: Upravit tuto stránku
 
 - id: Last modified by
-  translation: Zuletzt geändert von
+  translation: Autor poslední změny
 
 - id: Expand
-  translation: Erweitern
+  translation: Rozbalit
 
 - id: bookSearchConfig
   translation: '{ cache: true }'
