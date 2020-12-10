@@ -1,0 +1,33 @@
+{{ $collapsibleid := (.Get "item") }}
+<div class="content">
+    <a class="collapsible" id="collapsible-{{md5 $collapsibleid}}">{{.Get "item"}}
+        <span>▾</span>
+    </a>
+    <div style="display: none;">
+        {{ .Inner | markdownify }}
+    </div>
+</div>
+
+<script>
+    var coll = document.getElementById("collapsible-{{md5 $collapsibleid}}");
+
+    var pathOfCollapsible = "{{.Get "path"}}";
+    var currentPath = window.location.pathname;
+    var content = coll.nextElementSibling;
+
+
+    if (currentPath.startsWith(pathOfCollapsible)) {
+        content.style.display = "block";
+    }
+
+    coll.addEventListener("click", function () {
+        this.style = "block";
+        var content = this.nextElementSibling;
+
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+</script>
