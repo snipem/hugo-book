@@ -1,6 +1,6 @@
 {{ $collapsibleid := (.Get "item") }}
 <div class="content">
-    <a class="collapsible" id="collapsible-{{md5 $collapsibleid}}">{{.Get "item"}}
+    <a class="collapsible" style="font-weight: bold;" id="collapsible-{{md5 $collapsibleid}}">{{.Get "item"}}
         <span>▾</span>
     </a>
     <div style="display: none;">
