@@ -1,47 +1,24 @@
 name: Build with Hugo
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  hugo-latest:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        hugo-version:
+          - 'latest'
+          - '0.68.0'
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
-      - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@v0.2.3
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          source: assets/book.scss
-          destination: assets/book.static.css
-
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v4
-        with:
-          message: "Auto Compiled css"
-          add: "assets/book.static.css"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Hugo
-        run: |
-          LATEST_VERSION=`curl --silent "https://api.github.com/repos/gohugoio/hugo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'`
-          VERSION_NO_PREFIX=`echo $LATEST_VERSION | cut -c 2-`
-          wget "https://github.com/gohugoio/hugo/releases/download/$LATEST_VERSION/hugo_extended_${VERSION_NO_PREFIX}_Linux-64bit.deb" -O /tmp/hugo.deb
-          sudo dpkg -i /tmp/hugo.deb
+          hugo-version: ${{ matrix.hugo-version }}
+          extended: true
 
       - name: Run Hugo
         working-directory: exampleSite
-        run: hugo --themesDir ../.. --theme monako-book
-  hugo-minimum:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - name: Install Hugo
-        run: |
-          wget "https://github.com/gohugoio/hugo/releases/download/v0.65.0/hugo_extended_0.65.0_Linux-64bit.deb" -O /tmp/hugo.deb
-          sudo dpkg -i /tmp/hugo.deb
-
-      - name: Run Hugo
-        working-directory: exampleSite
-        run: hugo --themesDir ../.. --theme monako-book
+        run: hugo --themesDir ../..

@@ -1,0 +1,23 @@
+name: Compile static css
+
+on: [push]
+
+jobs:
+  hugo-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.3
+        with:
+          source: assets/book.scss
+          destination: assets/book.static.css
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: "Auto Compiled css"
+          add: "assets/book.static.css"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
