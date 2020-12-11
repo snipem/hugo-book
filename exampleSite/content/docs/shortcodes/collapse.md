@@ -1,7 +1,7 @@
 
-# Collapsable
+# Collapse
 
-Collapsable menus structure the menu. Enable `BookMenuBundle` for this to work.
+Collapse menus structure the menu. Enable `BookMenuBundle` for this to work.
 
 ```toml
   BookMenuBundle = '/menu'
@@ -12,9 +12,9 @@ The `item` is the heading you want to use as a button for collapsing the menu. `
 ## Example
 
 ```tpl
-{{</* collapsable item="Name of Entry" path="/docs/shortcodes/" */>}}
+{{</* collapse item="Name of Entry" path="/docs/shortcodes/" */>}}
 - [Buttons]({{</* relref "/docs/shortcodes/buttons" */>}})
 - [Columns]({{</* relref "/docs/shortcodes/columns" */>}})
 - [Expand]({{</* relref "/docs/shortcodes/expand" */>}})
-{{</* /collapsable */>}}
+{{</* /collapse */>}}
 ```
