@@ -2,7 +2,7 @@
 headless: true
 ---
 
-- [**Example# Site**]({{< relref "/docs/example" >}})
+- [**Example Site**]({{< relref "/docs/example" >}})
 - [Table of Contents]({{< relref "/docs/example/table-of-contents" >}})
   - [With ToC]({{< relref "/docs/example/table-of-contents/with-toc" >}})
   - [Without ToC]({{< relref "/docs/example/table-of-contents/without-toc" >}})
@@ -13,9 +13,10 @@ headless: true
 
 
 - **Shortcodes**
-{{< collapse item="Collap Menu" path="/docs/shortcodes/">}}
+{{< collapse item="First Collap Menu" path="/docs/shortcodes/">}}
 - [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
 - [Columns]({{< relref "/docs/shortcodes/columns" >}})
+- [Collapse]({{< relref "/docs/shortcodes/collapse" >}})
 - [Expand]({{< relref "/docs/shortcodes/expand" >}})
 - [Hints]({{< relref "/docs/shortcodes/hints" >}})
 - [Katex]({{< relref "/docs/shortcodes/katex" >}})
@@ -24,8 +25,8 @@ headless: true
 {{< /collapse >}} 
 <br />
 
-{{< collapse item="Test" path="/docs/test/">}}
-  - test 123
+{{< collapse item="Second Collap Menu" path="/docs/test/">}}
+- [Mermaid]({{< relref "/docs/shortcodes/mermaid" >}})
+- [Tabs]({{< relref "/docs/shortcodes/tabs" >}})
 {{< /collapse >}} 
-
-bjdg
+<br />
