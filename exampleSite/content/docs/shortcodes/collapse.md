@@ -12,7 +12,7 @@ The `item` is the heading you want to use as a button for collapsing the menu. `
 ## Example
 
 ```tpl
-{{</* collapse item="Name of Entry" path="/docs/shortcodes/" */>}}
+{{</* collapse id="Name of Entry" path="/docs/shortcodes/" */>}}
 - [Buttons]({{</* relref "/docs/shortcodes/buttons" */>}})
 - [Columns]({{</* relref "/docs/shortcodes/columns" */>}})
 - [Expand]({{</* relref "/docs/shortcodes/expand" */>}})

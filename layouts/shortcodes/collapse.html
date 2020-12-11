@@ -1,19 +1,19 @@
-{{ $collapsibleid := (.Get "item") }}
+{{ $collapsibleid := (.Get "id") }}
 <div class="content">
-    <a class="collapsible" style="font-weight: bold;" id="collapsible-{{md5 $collapsibleid}}">{{.Get "item"}}
-        <span>▾</span>
+    <a class="collapsible" style="font-weight: bold;" id="collapsible-{{md5 $collapsibleid}}">
+        {{.Get "id" | markdownify}} <span>▾</span>
     </a>
-    <div style="display: none;">
-        {{ .Inner | markdownify }}
+    <div id="collapsible-content-{{md5 $collapsibleid}}" style="display: none;">
+        {{ replaceRE "(^\\s)" "" .Inner| markdownify }}
     </div>
 </div>
 
 <script>
     var coll = document.getElementById("collapsible-{{md5 $collapsibleid}}");
+    var content = document.getElementById("collapsible-content-{{md5 $collapsibleid}}");
 
     var pathOfCollapsible = "{{.Get "path"}}";
     var currentPath = window.location.pathname;
-    var content = coll.nextElementSibling;
 
 
     if (currentPath.startsWith(pathOfCollapsible)) {
@@ -21,8 +21,8 @@
     }
 
     coll.addEventListener("click", function () {
-        var content = this.nextElementSibling;
 
+        var content = document.getElementById("collapsible-content-{{md5 $collapsibleid}}");
         if (content.style.display === "block") {
             content.style.display = "none";
         } else {
